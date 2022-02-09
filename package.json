@@ -1,5 +1,5 @@
 {
-  "name": "strapi-tutorial-shortner",
+  "name": "strapi-tutorial-shortener",
   "private": true,
   "version": "0.1.0",
   "description": "A Strapi application",
@@ -17,7 +17,7 @@
     "sqlite3": "5.0.2"
   },
   "author": {
-    "name": "A Strapi developer"
+    "name": "Andrew Zhukov<andrewzhukovweb@gmail.com>"
   },
   "strapi": {
     "uuid": "1ada10df-575c-4d98-9379-33843be59de9"
