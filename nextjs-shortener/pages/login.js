@@ -2,7 +2,7 @@ import Head from "next/head";
 import { useState, useEffect, useContext } from "react";
 import AuthContext from "../lib/context";
 import { useRouter } from "next/router";
-import { login } from "next/link";
+import { login } from "../lib/auth";
 import Link from "next/link";
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -45,10 +45,23 @@ const Login = () => {
         </h1>
 
         <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">
-          <form className="w-full max-w-lg mt-8" onSubmit={(e) => { e.preventDefault(); signIn(email, password) }}>
+          <form
+            className="w-full max-w-lg mt-8"
+            onSubmit={(e) => {
+              e.preventDefault();
+              signIn();
+            }}
+          >
             <div className="flex flex-wrap -mx-3 mb-2">
               <div className="w-full px-3 mb-6 md:mb-0">
-                <input onChange={onInputChange} name="email" placeholder="Enter email..." className={`appearance-none block w-full text-gray-700 mb-4 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 ${errors.email ? "border-red-500" : "border-gray-200"}`} id="grid-email" type="email" />
+                <input
+                  onChange={onInputChange}
+                  name="email"
+                  placeholder="Enter email..."
+                  className={`appearance-none block w-full text-gray-700 mb-6 border-2 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 ${errors.email ? "border-red-500" : "border-gray-200"}`}
+                  id="grid-email"
+                  type="email"
+                />
                 {errors.email ? (
                   <p className="text-red-500 text-xs italic">{errors.email}</p>
                 ) : ''}
@@ -56,9 +69,14 @@ const Login = () => {
             </div>
             <div className="flex flex-wrap -mx-3 mb-6">
               <div className="w-full px-3">
-                <span className={`w-full inline-flex items-center rounded border border-r-1 text-gray-700 mb-2 text-sm  focus:outline-none focus:bg-white focus:border-gray-500 ${errors.password ? "border-red-500 " : " border-gray-200"}`}>
-                  <input onChange={onInputChange} name="password" placeholder="******************" className="appearance-none block rounded w-full py-3 px-4 leading-tight" id="grid-password" type='password' />
-                </span>
+                <input
+                  onChange={onInputChange}
+                  name="password"
+                  placeholder="******************"
+                  className={`appearance-none block w-full text-gray-700 mb-4 border-2 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 ${errors.email ? "border-red-500" : "border-gray-200"}`}
+                  id="grid-password"
+                  type='password'
+                />
                 {errors.password ? (
                   <p className="text-red-500 text-xs italic">{errors.password}</p>
                 ) : ''}
@@ -67,16 +85,14 @@ const Login = () => {
             {errors.server ? (
                   <p className="text-red-500 text-xs italic">{errors.server}</p>
                 ) : ''}
-            <div className="flex flex-row flex-wrap justify-between">
-              <button disabled={loading} className={`w-full md:w-1/2 mt-3 flex justify-center align-center hover:bg-gray-200 hover:text-gray-900 rounded-md px-2 py-3 uppercase ${loading ? "bg-gray-200  text-black cursor-not-allowed" : "bg-gray-900  text-white cursor-pointer"}`}>
+                <button disabled={loading} className={`w-full mx-auto md:w-1/2 mt-3 mb-4 flex justify-center align-center hover:bg-gray-200 hover:text-gray-900 rounded-md px-2 py-3 uppercase ${loading ? "bg-gray-200  text-black cursor-not-allowed" : "bg-gray-900  text-white cursor-pointer"}`}>
                 {loading ? (
                   <>
                     loading &nbsp;...
                   </>
                 ) : 'LOG IN'}
-              </button>
-              <span className="text-blue-600 hover:text-gray-600 pt-2 md:p-6"> <Link href="/register">Register</Link></span>
-            </div>
+                </button>
+                <span className="text-blue-600 hover:text-gray-600 pt-2 md:p-6 underline"> <Link href="/register">Register</Link></span>
           </form>
         </div>
       </main>

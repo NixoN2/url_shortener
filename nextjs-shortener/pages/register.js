@@ -49,10 +49,23 @@ const Register = () => {
         </h1>
 
         <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">
-          <form className="w-full max-w-lg mt-8" onSubmit={(e) => { e.preventDefault(); submit() }}>
+          <form
+            className="w-full max-w-lg mt-8"
+            onSubmit={(e) => {
+              e.preventDefault();
+              submit();
+            }}
+          >
           <div className="flex flex-wrap -mx-3 mb-2">
               <div className="w-full px-3 mb-6 md:mb-0">
-                <input onChange={onInputChange} name="username"  placeholder="Enter username" className={`appearance-none block w-full text-gray-700 mb-4 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 ${errors.username ? "border-red-500" : "border-gray-200"}`} id="grid-username" type="text" />
+                <input
+                  onChange={onInputChange}
+                  name="username"
+                  placeholder="Enter username"
+                  className={`appearance-none block w-full text-gray-700 mb-4 border-2 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 ${errors.username ? "border-red-500" : "border-gray-200"}`}
+                  id="grid-username"
+                  type="text"
+                />
                 {errors.username ? (
                   <p className="text-red-500 text-xs italic">{errors.username}</p>
                 ) : ''}
@@ -60,7 +73,14 @@ const Register = () => {
             </div>
             <div className="flex flex-wrap -mx-3 mb-2">
               <div className="w-full px-3 mb-6 md:mb-0">
-                <input onChange={onInputChange} name="email"  placeholder="Enter email" className={`appearance-none block w-full text-gray-700 mb-4 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 ${errors.email ? "border-red-500" : "border-gray-200"}`} id="grid-email" type="email" />
+                <input
+                  onChange={onInputChange}
+                  name="email"
+                  placeholder="Enter email"
+                  className={`appearance-none block w-full text-gray-700 mb-4 border-2 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 ${errors.email ? "border-red-500" : "border-gray-200"}`}
+                  id="grid-email"
+                  type="email"
+                />
                 {errors.email ? (
                   <p className="text-red-500 text-xs italic">{errors.email}</p>
                 ) : ''}
@@ -68,9 +88,14 @@ const Register = () => {
             </div>
             <div className="flex flex-wrap -mx-3 mb-6">
               <div className="w-full px-3">
-                <span className={`w-full inline-flex items-center rounded border border-r-1  text-gray-700 mb-2 text-sm  focus:outline-none focus:bg-white focus:border-gray-500 ${errors.password ? "border-red-500 " : " border-gray-200"}`}>
-                  <input onChange={onInputChange} name="password" placeholder="******************" className="appearance-none block rounded w-full py-3 px-4 leading-tight" id="grid-password" type='password' />
-                </span>
+                <input
+                  onChange={onInputChange}
+                  name="password"
+                  placeholder="******************"
+                  className={`appearance-none block w-full text-gray-700 mb-4 border-2 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 ${errors.email ? "border-red-500" : "border-gray-200"}`}
+                  id="grid-password"
+                  type='password'
+                />
                 {errors.password ? (
                   <p className="text-red-500 text-xs italic">{errors.password}</p>
                 ) : ''}
@@ -79,16 +104,14 @@ const Register = () => {
             {errors.server ? (
                   <p className="text-red-500 text-xs italic">{errors.server}</p>
                 ) : ''}
-            <div className="flex flex-row flex-wrap justify-between">
-              <span className="text-blue-600 hover:text-gray-600 pt-2 md:p-6"> <Link href="/login">Back to Login?</Link></span>
-              <button disabled={loading} className={`w-full md:w-1/2 mt-3 flex justify-center hover:bg-gray-200 hover:text-gray-900 rounded-md px-3 py-3 uppercase ${loading ? "bg-gray-200  text-black cursor-not-allowed" : "bg-gray-900  text-white cursor-pointer"}`}>
-                {loading ? (
-                  <>
-                    loading &nbsp;...
-                  </>
-                ) : 'Register'}
-              </button>
-            </div>
+            <button disabled={loading} className={`w-full md:w-1/2 mt-3 mx-auto mb-4 flex justify-center hover:bg-gray-200 hover:text-gray-900 rounded-md px-3 py-3 uppercase ${loading ? "bg-gray-200  text-black cursor-not-allowed" : "bg-gray-900  text-white cursor-pointer"}`}>
+              {loading ? (
+                <>
+                  loading &nbsp;...
+                </>
+              ) : 'Register'}
+            </button>
+            <span className="text-blue-600 hover:text-gray-600 pt-2 md:p-6"> <Link href="/login">Back to Login?</Link></span>
           </form>
         </div>
       </main>

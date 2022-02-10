@@ -40,11 +40,11 @@ module.exports = createCoreController('api::shortener.shortener', ({strapi}) => 
     const user = ctx.state.user;
     let entity;
     let query = { user: { '$eq': user.id }, id: { '$eq': id } };
-    entity = await strapi.service('api::shortener:shortener').find({ filters: query });
+    entity = await strapi.service('api::shortener.shortener').find({ filters: query });
     if (entity.results.length === 0){
       return ctx.badRequest(null, [{ messages: [{ id: 'You can delete someone else content'}]}]);
     }
-    entity = await strapi.service('api::shortener:shortener').delete(id);
+    entity = await strapi.service('api::shortener.shortener').delete(id);
     const sanitizedEntity = await this.sanitizeOutput(entity, ctx);
     return this.transformResponse(sanitizedEntity);
   },

@@ -20,11 +20,11 @@ export const register = async (username, email, password) => {
   }
 };
 
-export const login = async (id, password) => {
+export const login = async (identifier, password) => {
   try {
     let response = await fetch(`${API_URL}/api/auth/local`, {
       method: "POST",
-      body: JSON.stringify({id, password}),
+      body: JSON.stringify({identifier, password}),
       headers: {
         "Content-Type": "application/json"
       },
